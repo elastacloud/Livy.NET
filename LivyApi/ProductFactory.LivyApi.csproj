@@ -7,8 +7,8 @@
     <ProjectGuid>{9A374DB7-355C-42AE-840E-720EB4A52C2F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ProductFactory.LivyApi</RootNamespace>
-    <AssemblyName>ProductFactory.LivyApi</AssemblyName>
+    <RootNamespace>Elastacloud.LivyApi</RootNamespace>
+    <AssemblyName>Elastacloud.LivyApi</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,12 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="netbox, Version=1.0.1703.701, Culture=neutral, PublicKeyToken=8dea52f811e261ef, processorArchitecture=MSIL">
+      <HintPath>..\packages\netbox.1.0.1703.0701\lib\net45\netbox.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,17 +49,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppList\appInfo.cs" />
-    <Compile Include="AppList\appList.cs" />
+    <Compile Include="LivyBatchListResponse.cs" />
     <Compile Include="AppList\executeResponse.cs" />
     <Compile Include="AppList\session.cs" />
     <Compile Include="ILivyApi.cs" />
-    <Compile Include="LivyApi.cs" />
+    <Compile Include="LivyRestApi.cs" />
+    <Compile Include="LivyBatchRequest.cs" />
+    <Compile Include="LivyBatchResponse.cs" />
     <Compile Include="LivySettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SparkJobState.cs" />
     <Compile Include="SparkSettings.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

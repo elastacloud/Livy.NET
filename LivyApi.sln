@@ -1,13 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductFactory.LivyApi", "LivyApi\ProductFactory.LivyApi.csproj", "{9A374DB7-355C-42AE-840E-720EB4A52C2F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductFactory.LivyApi.Test", "LivyApi.Test\ProductFactory.LivyApi.Test.csproj", "{34985E6D-6765-4561-97B5-6B475EDE8954}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductFactory.LivyApi.PS", "LivyApi.PS\ProductFactory.LivyApi.PS.csproj", "{D33FF887-0753-4923-8CD6-974130115BB0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{89FAD442-AA07-4187-8ACB-3E074E037532}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

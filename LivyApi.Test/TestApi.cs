@@ -21,28 +21,28 @@ namespace Elastacloud.LivyApi.Test
         public async Task TestList()
         {
             var settings = new LivySettings("azurecoder", "M!crosoft123", "flightaware-dev");
-            var api = new Mock<LivyApi>(settings);
+            var api = new Mock<LivyRestApi>(settings);
             api.Protected()
                 .Setup<Task<string>>("MakeRequest", ItExpr.IsAny<string>(), ItExpr.IsAny<string>(), ItExpr.IsAny<string>())
                 .Returns(Task.FromResult(ListResponse));
 
-            var applications = await api.Object.List();
-            Assert.Equal(2, applications.total);
+            var applications = await api.Object.ListAsync();
+            Assert.Equal(2, applications.Total);
         }
 
         [Fact]
         public async Task TestExecute()
         {
             var settings = new LivySettings("azurecoder", "M!crosoft123", "flightaware-dev");
-            var sparkSettings = new SparkSettings();
-            var api = new Mock<LivyApi>(settings);
+            var sparkSettings = new LivyBatchRequest(null);
+            var api = new Mock<LivyRestApi>(settings);
             api.Protected()
                 .Setup<Task<string>>("MakeRequest", ItExpr.IsAny<string>(), ItExpr.IsAny<string>(), ItExpr.IsAny<string>())
                 .Returns(Task.FromResult(ExecuteResponse));
 
-            var application = await api.Object.Execute(sparkSettings);
-            Assert.Equal(123, application.id);
-            Assert.Equal("starting", application.state);
+            var application = await api.Object.ExecuteAsync(sparkSettings);
+            Assert.Equal(123, application.SessionId);
+            Assert.Equal(SparkJobState.Starting, application.State);
         }
 
         [Fact]
@@ -50,7 +50,7 @@ namespace Elastacloud.LivyApi.Test
         {
             var settings = new LivySettings("azurecoder", "M!crosoft123", "flightaware-dev");
             var sparkSettings = new SparkSettings();
-            var api = new Mock<LivyApi>(settings);
+            var api = new Mock<LivyRestApi>(settings);
             api.Protected()
                 .Setup<Task<string>>("MakeRequest", ItExpr.IsAny<string>(), ItExpr.IsAny<string>(), ItExpr.IsAny<string>())
                 .Returns(Task.FromResult(ExecuteResponse));
@@ -64,7 +64,7 @@ namespace Elastacloud.LivyApi.Test
         {
             var settings = new LivySettings("azurecoder", "M!crosoft123", "flightaware-dev");
             var sparkSettings = new SparkSettings();
-            var api = new Mock<LivyApi>(settings);
+            var api = new Mock<LivyRestApi>(settings);
             api.Protected()
                 .Setup<Task<string>>("MakeRequest", ItExpr.IsAny<string>(), ItExpr.IsAny<string>(), ItExpr.IsAny<string>())
                 .Returns(Task.FromResult(IsRunningResponse));

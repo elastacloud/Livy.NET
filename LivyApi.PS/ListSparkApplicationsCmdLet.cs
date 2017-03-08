@@ -11,8 +11,8 @@ namespace Elastacloud.LivyApi.PS
     [Cmdlet(VerbsCommunications.Read, "SparkApplications")]
     public class ListSparkApplicationsCmdLet : Cmdlet
     {
-        private LivyApi _api;
-        private appList _appList;
+        private LivyRestApi _api;
+        private LivyBatchListResponse _appList;
          
         [Parameter(Mandatory = true)]
         public string ClusterName { get; set; }
@@ -26,26 +26,26 @@ namespace Elastacloud.LivyApi.PS
         protected override void BeginProcessing()
         {
             WriteObject($"Connecting to HDInsight cluster {ClusterName}");
-            _api = new LivyApi(new LivySettings(Username, Password, ClusterName));
+            _api = new LivyRestApi(new LivySettings(Username, Password, ClusterName));
         }
 
         protected override void ProcessRecord()
         {
             var colour = Console.ForegroundColor;
-            _appList = _api.List().Result;
-            var sessions = _appList.sessions;
+            _appList = _api.ListAsync().Result;
+            var sessions = _appList.Sessions;
             foreach (var session in sessions)
             {
-                if (session.state != "running" && session.state != "started") continue;
+                if (session.State != SparkJobState.Running && session.State != SparkJobState.Starting) continue;
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                WriteObject($"{session.appId} is in a {session.state} state");
+                WriteObject($"{session.ApplicationId} is in a {session.State} state");
                 Console.ForegroundColor = colour;
             }
         }
 
         protected override void EndProcessing()
         {
-            WriteObject($"{_appList.total} apps running on the Spark cluster");
+            WriteObject($"{_appList.Total} apps running on the Spark cluster");
         }
     }
 }
