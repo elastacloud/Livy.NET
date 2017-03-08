@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
 using Elastacloud.LivyApi.AppList;
 
 namespace Elastacloud.LivyApi.PS
@@ -12,7 +8,6 @@ namespace Elastacloud.LivyApi.PS
    public class ExecuteSparkApplicationCmdLet : Cmdlet
    {
       private LivyRestApi _api;
-      private LivyBatchListResponse _appList;
 
       [Parameter(Mandatory = true)]
       public string ClusterName { get; set; }
@@ -51,7 +46,6 @@ namespace Elastacloud.LivyApi.PS
 
       protected override void EndProcessing()
       {
-         WriteObject($"{_appList.Total} apps running on the Spark cluster");
       }
    }
 }
