@@ -9,6 +9,11 @@ namespace Elastacloud.LivyApi
          this.File = file;
       }
 
+      public static LivyBatchRequest FromJar(string file, string className)
+      {
+         return new LivyBatchRequest(file) { ClassName = className };
+      }
+
       /// <summary>
       /// File path containing the application to execute.
       /// </summary>

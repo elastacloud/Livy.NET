@@ -48,10 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppList\appInfo.cs" />
     <Compile Include="LivyBatchListResponse.cs" />
-    <Compile Include="AppList\executeResponse.cs" />
-    <Compile Include="AppList\session.cs" />
     <Compile Include="ILivyApi.cs" />
     <Compile Include="LivyRestApi.cs" />
     <Compile Include="LivyBatchRequest.cs" />

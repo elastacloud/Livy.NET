@@ -37,10 +37,10 @@ namespace Elastacloud.LivyApi.PS
             ClassName = ClassName,
          }).Result;
          var state = executeResponse.State;
-         while (state == SparkJobState.Running || state == SparkJobState.Starting)
+         while (state == SparkJobState.Busy || state == SparkJobState.Starting)
          {
-            state = _api.GetJobState(executeResponse.SessionId).Result;
-            WriteObject($"Processing record with state {state}");
+            var state2 = _api.GetBatchStateAsync(executeResponse.SessionId).Result;
+            WriteObject($"Processing record with state {state2.State}");
          }
       }
 

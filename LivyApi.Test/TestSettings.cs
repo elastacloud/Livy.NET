@@ -7,6 +7,10 @@ namespace ProductFactory.LivyApi.Test
    {
       public readonly Option<NetworkCredential> SparkCluster;
 
+      public readonly Option<string> SparkJobFile;
+
+      public readonly Option<string> SparkJobClassName;
+
       protected override void OnConfigure(IConfigConfiguration configuration)
       {
          configuration.UseIniFile("c:\\tmp\\LivyApi.ini");

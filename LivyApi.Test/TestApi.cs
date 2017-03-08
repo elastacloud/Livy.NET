@@ -55,8 +55,8 @@ namespace Elastacloud.LivyApi.Test
                 .Setup<Task<string>>("MakeRequest", ItExpr.IsAny<string>(), ItExpr.IsAny<string>(), ItExpr.IsAny<string>())
                 .Returns(Task.FromResult(ExecuteResponse));
 
-            var isRunning = await api.Object.GetJobState(123);;
-            Assert.Equal(SparkJobState.Starting, isRunning);
+            var isRunning = await api.Object.GetBatchStateAsync(123);;
+            Assert.Equal(SparkJobState.Starting, isRunning.State);
         }
 
         [Fact]
@@ -69,8 +69,8 @@ namespace Elastacloud.LivyApi.Test
                 .Setup<Task<string>>("MakeRequest", ItExpr.IsAny<string>(), ItExpr.IsAny<string>(), ItExpr.IsAny<string>())
                 .Returns(Task.FromResult(IsRunningResponse));
 
-            var isRunning = await api.Object.GetJobState(123); ;
-            Assert.Equal(SparkJobState.Success, isRunning);
+            var isRunning = await api.Object.GetBatchStateAsync(123); ;
+            Assert.Equal(SparkJobState.Success, isRunning.State);
         }
 
     }

@@ -48,29 +48,10 @@ namespace Elastacloud.LivyApi
       /// <summary>
       /// Checks to see whether a job is running
       /// </summary>
-      public async Task<SparkJobState> GetJobState(int id)
+      public async Task<LivyBatchResponse> GetBatchStateAsync(int id)
       {
          var response = await MakeRequest(BatchUri, "GET", Convert.ToString(id));
-         var executeResponse = JsonConvert.DeserializeObject<executeResponse>(response);
-         SparkJobState state;
-         switch (executeResponse.state.ToLower())
-         {
-            case "starting":
-               state = SparkJobState.Starting;
-               break;
-            case "running":
-               state = SparkJobState.Running;
-               break;
-            case "success":
-               state = SparkJobState.Success;
-               break;
-            case "failed":
-            case "dead":
-            default:
-               state = SparkJobState.Failed;
-               break;
-         }
-         return state;
+         return response.AsJsonObject<LivyBatchResponse>();
       }
       /// <summary>
       /// Builds the request to the Livy API

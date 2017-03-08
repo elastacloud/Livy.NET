@@ -1,6 +1,5 @@
 ﻿using Elastacloud.LivyApi;
 using Elastacloud.LivyApi.AppList;
-using System.Net;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -16,6 +15,17 @@ namespace ProductFactory.LivyApi.Test
          _settings = new TestSettings();
 
          _api = new LivyRestApi(_settings.SparkCluster);
+      }
+
+      [Fact]
+      public async Task I_can_submit_job_and_get_back_its_status()
+      {
+         LivyBatchResponse response = await _api.ExecuteAsync(LivyBatchRequest.FromJar(_settings.SparkJobFile, _settings.SparkJobClassName));
+
+         Assert.NotNull(response.SessionId);
+
+         LivyBatchResponse batch = await _api.GetBatchStateAsync(response.SessionId);
+         Assert.Equal(SparkJobState.Starting, batch.State);
       }
 
 

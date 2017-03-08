@@ -36,7 +36,7 @@ namespace Elastacloud.LivyApi.PS
             var sessions = _appList.Sessions;
             foreach (var session in sessions)
             {
-                if (session.State != SparkJobState.Running && session.State != SparkJobState.Starting) continue;
+                if (session.State != SparkJobState.Busy && session.State != SparkJobState.Starting) continue;
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 WriteObject($"{session.ApplicationId} is in a {session.State} state");
                 Console.ForegroundColor = colour;

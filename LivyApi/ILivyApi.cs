@@ -12,13 +12,15 @@ namespace Elastacloud.LivyApi
       /// Lists all running jobs on a cluster
       /// </summary>
       Task<LivyBatchListResponse> ListAsync();
+
       /// <summary>
       /// Executes a Livy job using a storage jar
       /// </summary>
       Task<LivyBatchResponse> ExecuteAsync(LivyBatchRequest batch);
+
       /// <summary>
       /// Checks to see whether a job is running
       /// </summary>
-      Task<SparkJobState> GetJobState(int id);
+      Task<LivyBatchResponse> GetBatchStateAsync(int sessionId);
    }
 }
