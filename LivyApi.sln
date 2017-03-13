@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductFactory.LivyApi", "LivyApi\ProductFactory.LivyApi.csproj", "{9A374DB7-355C-42AE-840E-720EB4A52C2F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductFactory.LivyApi.Test", "LivyApi.Test\ProductFactory.LivyApi.Test.csproj", "{34985E6D-6765-4561-97B5-6B475EDE8954}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductFactory.LivyApi.PS", "LivyApi.PS\ProductFactory.LivyApi.PS.csproj", "{D33FF887-0753-4923-8CD6-974130115BB0}"
@@ -12,9 +10,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{89FAD442-AA07-4187-8ACB-3E074E037532}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
-		livy.nuspec = livy.nuspec
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elastacloud.LivyApi", "Elastacloud.LivyApi\Elastacloud.LivyApi.csproj", "{9E05A389-53C7-4250-A8A5-652BF16E6A52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,10 +21,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9A374DB7-355C-42AE-840E-720EB4A52C2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9A374DB7-355C-42AE-840E-720EB4A52C2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9A374DB7-355C-42AE-840E-720EB4A52C2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9A374DB7-355C-42AE-840E-720EB4A52C2F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{34985E6D-6765-4561-97B5-6B475EDE8954}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{34985E6D-6765-4561-97B5-6B475EDE8954}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34985E6D-6765-4561-97B5-6B475EDE8954}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -34,6 +29,10 @@ Global
 		{D33FF887-0753-4923-8CD6-974130115BB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D33FF887-0753-4923-8CD6-974130115BB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D33FF887-0753-4923-8CD6-974130115BB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E05A389-53C7-4250-A8A5-652BF16E6A52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E05A389-53C7-4250-A8A5-652BF16E6A52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E05A389-53C7-4250-A8A5-652BF16E6A52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E05A389-53C7-4250-A8A5-652BF16E6A52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

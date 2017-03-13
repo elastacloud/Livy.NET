@@ -54,9 +54,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LivyApi\ProductFactory.LivyApi.csproj">
-      <Project>{9a374db7-355c-42ae-840e-720eb4a52c2f}</Project>
-      <Name>ProductFactory.LivyApi</Name>
+    <ProjectReference Include="..\Elastacloud.LivyApi\Elastacloud.LivyApi.csproj">
+      <Project>{9e05a389-53c7-4250-a8a5-652bf16e6a52}</Project>
+      <Name>Elastacloud.LivyApi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
