@@ -1,5 +1,6 @@
 ﻿using Elastacloud.LivyApi;
 using Elastacloud.LivyApi.AppList;
+using System;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -20,7 +21,10 @@ namespace ProductFactory.LivyApi.Test
       [Fact]
       public async Task I_can_submit_job_and_get_back_its_status()
       {
-         LivyBatchResponse response = await _api.ExecuteAsync(LivyBatchRequest.FromJar(_settings.SparkJobFile, _settings.SparkJobClassName));
+         var job = LivyBatchRequest.FromJar(_settings.SparkJobFile, _settings.SparkJobClassName);
+         job.Args = new[] { Guid.NewGuid().ToString(), "p1=v1" };
+
+         LivyBatchResponse response = await _api.ExecuteAsync(job);
 
          Assert.NotNull(response.SessionId);
 

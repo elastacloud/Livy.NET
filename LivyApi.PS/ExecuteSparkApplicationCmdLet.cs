@@ -33,7 +33,7 @@ namespace Elastacloud.LivyApi.PS
          var colour = Console.ForegroundColor;
          var executeResponse = _api.ExecuteAsync(new LivyBatchRequest(SparkJar)
          {
-            Args = Args,
+            Args = new string[] { Args },
             ClassName = ClassName,
          }).Result;
          var state = executeResponse.State;

@@ -1,17 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard1.6;net45</TargetFrameworks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>Elastacloud.LivyApi</PackageId>
-    <VersionPrefix>2.2-alpha-1</VersionPrefix>
-    <Authors>Elastacloud, Richard Conway (@azurecoder), Andy Cross (@andyelastacloud), Ivan Gavryliuk</Authors>
+    <VersionPrefix>2.2.3</VersionPrefix>
+    <Authors>Elastacloud, Richard Conway (@azurecoder), Andy Cross (@andyelastacloud), Ivan Gavryliuk (@aloneguid)</Authors>
     <Company>Elastacloud</Company>
     <Product />
     <Description>A C# API facilitate access to Livy and HDInsight (Spark).</Description>
-    <PackageTags>hdinsight livy spark</PackageTags>
+    <PackageTags>hdinsight livy spark scala cloudera</PackageTags>
     <PackageProjectUrl>https://github.com/elastacloud/livyapi</PackageProjectUrl>
     <RepositoryUrl>https://github.com/elastacloud/livyapi</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
+    <PackageIconUrl>http://i.isolineltd.com/nuget/ec-livy.png</PackageIconUrl>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.6' ">
     <DefineConstants>$(DefineConstants);NETSTANDARD</DefineConstants>
@@ -21,7 +22,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
-    <PackageReference Include="netbox" Version="1.0.1703.701" />
+    <PackageReference Include="netbox" Version="1.1.2" />
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
     <Reference Include="System.Net.Http" />

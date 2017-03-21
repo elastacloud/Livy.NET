@@ -26,7 +26,17 @@ namespace Elastacloud.LivyApi
       [JsonProperty("className")]
       public string ClassName { get; set; }
 
+      /// <summary>
+      /// Optional job arguments to submit. This array corresponds to what you would type in the command line
+      /// separated by spaces
+      /// </summary>
+      /// <example>
+      /// Running a "spark.jar arg1=1 arg2 arg3 will result in json:
+      /// <code>
+      /// "args" : ["arg1=2", "arg2", "arg3"]
+      /// </code>
+      /// </example>
       [JsonProperty("args")]
-      public string Args { get; set; }
+      public string[] Args { get; set; }
    }
 }

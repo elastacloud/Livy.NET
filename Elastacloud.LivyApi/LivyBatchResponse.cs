@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 
 namespace Elastacloud.LivyApi
 {
@@ -43,7 +44,11 @@ namespace Elastacloud.LivyApi
       /// <summary>
       /// The batch state
       /// </summary>
+      [JsonProperty("state")]
       public SparkJobState State { get; set; }
+
+      [JsonProperty("appInfo")]
+      public Dictionary<string, string> AppInfo { get; set; }
 
       public override string ToString()
       {
