@@ -44,34 +44,5 @@ namespace Elastacloud.LivyApi.Test
             Assert.Equal(123, application.SessionId);
             Assert.Equal(SparkJobState.Starting, application.State);
         }
-
-        [Fact]
-        public async Task TestIsRunning_Starting()
-        {
-            var settings = new LivySettings("azurecoder", "M!crosoft123", "flightaware-dev");
-            var sparkSettings = new SparkSettings();
-            var api = new Mock<LivyRestApi>(settings);
-            api.Protected()
-                .Setup<Task<string>>("MakeRequest", ItExpr.IsAny<string>(), ItExpr.IsAny<string>(), ItExpr.IsAny<string>())
-                .Returns(Task.FromResult(ExecuteResponse));
-
-            var isRunning = await api.Object.GetBatchStateAsync(123);;
-            Assert.Equal(SparkJobState.Starting, isRunning.State);
-        }
-
-        [Fact]
-        public async Task TestIsRunning_Running()
-        {
-            var settings = new LivySettings("azurecoder", "M!crosoft123", "flightaware-dev");
-            var sparkSettings = new SparkSettings();
-            var api = new Mock<LivyRestApi>(settings);
-            api.Protected()
-                .Setup<Task<string>>("MakeRequest", ItExpr.IsAny<string>(), ItExpr.IsAny<string>(), ItExpr.IsAny<string>())
-                .Returns(Task.FromResult(IsRunningResponse));
-
-            var isRunning = await api.Object.GetBatchStateAsync(123); ;
-            Assert.Equal(SparkJobState.Success, isRunning.State);
-        }
-
     }
 }
