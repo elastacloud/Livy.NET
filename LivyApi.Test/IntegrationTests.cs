@@ -28,7 +28,6 @@ namespace ProductFactory.LivyApi.Test
          Assert.Equal(SparkJobState.Starting, batch.State);
       }
 
-
       [Fact]
       public async Task Job_appears_in_the_list_after_executing()
       {

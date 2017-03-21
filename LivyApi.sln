@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductFactory.LivyApi.Test", "LivyApi.Test\ProductFactory.LivyApi.Test.csproj", "{34985E6D-6765-4561-97B5-6B475EDE8954}"
 EndProject
@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{89FAD442-AA07-4187-8ACB-3E074E037532}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		build.ps1 = build.ps1
 		README.md = README.md
 	EndProjectSection
 EndProject
