@@ -8,7 +8,7 @@ param(
    $NuGetApiKey
 )
 
-$Version = "2.2.3"
+$Version = "2.2.4"
 
 function Update-ProjectVersion([string]$Path, [string]$Version)
 {
