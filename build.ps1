@@ -8,7 +8,13 @@ param(
    $NuGetApiKey
 )
 
-$Version = "2.2.4"
+$VersionPrefix = "2"
+$VersionSuffix = "2.5.0"
+
+$SlnPath = "LivyApi.sln"
+$AssemblyVersion = "$VersionPrefix.0.0.0"
+$PackageVersion = "$VersionPrefix.$VersionSuffix"
+Write-Host "version: $PackageVersion, assembly version: $AssemblyVersion"
 
 function Update-ProjectVersion([string]$Path, [string]$Version)
 {
@@ -23,7 +29,9 @@ function Update-ProjectVersion([string]$Path, [string]$Version)
       $pg = $xml.Project.PropertyGroup[0]
    }
 
-   $pg.VersionPrefix = $Version
+   $pg.Version = $PackageVersion
+   $pg.FileVersion = $PackageVersion
+   $pg.AssemblyVersion = $AssemblyVersion
 
    $xml.Save($Path)
 }
@@ -48,8 +56,8 @@ if($Publish -and (-not $NuGetApiKey))
 # Update versioning information
 Get-ChildItem *.csproj -Recurse | Where-Object {$_.Name -eq "Elastacloud.LivyApi.csproj"} | % {
    $path = $_.FullName
-   Write-Host "setting version of $path to $Version"
-   Update-ProjectVersion $path $Version
+   Write-Host "setting version of $path"
+   Update-ProjectVersion $path
 }
 
 # Restore packages
@@ -66,6 +74,7 @@ if($Publish.IsPresent)
 
    Get-ChildItem *.nupkg -Recurse | % {
       $path = $_.FullName
+      Write-Host "pushing from $path"
 
       Exec "nuget push $path -Source https://www.nuget.org/api/v2/package -ApiKey $NuGetApiKey"
    }

@@ -1,9 +1,10 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard1.6;net45</TargetFrameworks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>Elastacloud.LivyApi</PackageId>
-    <VersionPrefix>2.2.3</VersionPrefix>
+    <VersionPrefix>
+    </VersionPrefix>
     <Authors>Elastacloud, Richard Conway (@azurecoder), Andy Cross (@andyelastacloud), Ivan Gavryliuk (@aloneguid)</Authors>
     <Company>Elastacloud</Company>
     <Product />
@@ -13,6 +14,9 @@
     <RepositoryUrl>https://github.com/elastacloud/livyapi</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
     <PackageIconUrl>http://i.isolineltd.com/nuget/ec-livy.png</PackageIconUrl>
+    <Version>2.2.5.0</Version>
+    <FileVersion>2.2.5.0</FileVersion>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.6' ">
     <DefineConstants>$(DefineConstants);NETSTANDARD</DefineConstants>
