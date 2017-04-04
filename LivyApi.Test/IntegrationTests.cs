@@ -33,6 +33,16 @@ namespace ProductFactory.LivyApi.Test
       }
 
       [Fact]
+      public async Task I_can_submit_the_job_and_wait_for_completion()
+      {
+         var job = LivyBatchRequest.FromJar(_settings.SparkJobFile, _settings.SparkJobClassName);
+
+         LivyBatchResponse response = await _api.ExecuteWorkflowAsync(job, TimeSpan.FromMinutes(10));
+
+         Assert.NotNull(response);
+      }
+
+      [Fact]
       public async Task Job_appears_in_the_list_after_executing()
       {
          //todo: submit a job

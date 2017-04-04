@@ -9,7 +9,7 @@ param(
 )
 
 $VersionPrefix = "2"
-$VersionSuffix = "2.5.0"
+$VersionSuffix = "3.0.0"
 
 $SlnPath = "LivyApi.sln"
 $AssemblyVersion = "$VersionPrefix.0.0.0"

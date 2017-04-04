@@ -17,4 +17,6 @@ ILivyClient client = new LivyRestClient(creds);
 
 note that `cluster_name` is not a full url but just an HDInsight cluster name.
 
+Once the client is creating you can start calling methods on `ILivyClient`.
+
 

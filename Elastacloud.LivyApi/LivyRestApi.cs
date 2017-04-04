@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Elastacloud.LivyApi.AppList;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Diagnostics;
 
 namespace Elastacloud.LivyApi
 {
@@ -49,8 +50,35 @@ namespace Elastacloud.LivyApi
       /// </summary>
       public async Task<LivyBatchResponse> ExecuteAsync(LivyBatchRequest batch)
       {
-         return await Post<LivyBatchRequest, LivyBatchResponse>("batches", batch);
+         LivyBatchResponse response = await Post<LivyBatchRequest, LivyBatchResponse>("batches", batch);
+         return response;
       }
+
+      public async Task<LivyBatchResponse> ExecuteWorkflowAsync(LivyBatchRequest batch, TimeSpan waitTime)
+      {
+         LivyBatchResponse response = await Post<LivyBatchRequest, LivyBatchResponse>("batches", batch);
+
+         DateTime startTime = DateTime.UtcNow;
+
+         while (response.State != SparkJobState.Dead && response.State != SparkJobState.Error && response.State != SparkJobState.Success)
+         {
+            TimeSpan length = DateTime.UtcNow - startTime;
+
+            Debug.WriteLine("session id: {0}, state: {1}, length: {2}", response.SessionId, response.State, length);
+
+            if (length > waitTime)
+            {
+               throw new TimeoutException("the workflow has timed out");
+            }
+
+            await Task.Delay(TimeSpan.FromSeconds(10));
+
+            response = await GetBatchStateAsync(response.SessionId);
+         }
+
+         return response;
+      }
+
       /// <summary>
       /// Checks to see whether a job is running
       /// </summary>
