@@ -59,21 +59,40 @@ namespace Elastacloud.LivyApi
          LivyBatchResponse response = await Post<LivyBatchRequest, LivyBatchResponse>("batches", batch);
 
          DateTime startTime = DateTime.UtcNow;
+         Exception lastException = null;
 
-         while (response.State != SparkJobState.Dead && response.State != SparkJobState.Error && response.State != SparkJobState.Success)
+         while (
+            (response == null) ||
+            (response.State != SparkJobState.Dead && response.State != SparkJobState.Error && response.State != SparkJobState.Success))
          {
             TimeSpan length = DateTime.UtcNow - startTime;
 
-            Debug.WriteLine("session id: {0}, state: {1}, length: {2}", response.SessionId, response.State, length);
+            if (response != null)
+            {
+               Debug.WriteLine("session id: {0}, state: {1}, length: {2}", response.SessionId, response.State, length);
+
+            }
+            else
+            {
+               Debug.WriteLine("no response received, will try again");
+            }
 
             if (length > waitTime)
             {
-               throw new TimeoutException("the workflow has timed out");
+               throw new TimeoutException("the workflow has timed out", lastException);
             }
 
             await Task.Delay(TimeSpan.FromSeconds(10));
 
-            response = await GetBatchStateAsync(response.SessionId);
+            try
+            {
+               response = await GetBatchStateAsync(response.SessionId);
+            }
+            catch(Exception ex)
+            {
+               lastException = ex;
+               Debug.WriteLine("unexpected livy error: " + ex.ToString());
+            }
          }
 
          return response;
