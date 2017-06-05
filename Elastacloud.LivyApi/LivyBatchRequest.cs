@@ -38,5 +38,37 @@ namespace Elastacloud.LivyApi
       /// </example>
       [JsonProperty("args")]
       public string[] Args { get; set; }
+
+      /// <summary>
+      /// Amount of memory to use for the driver process
+      /// </summary>
+      [JsonProperty("driverMemory")]
+      public string DriverMemory { get; set; }
+
+      /// <summary>
+      /// Number of cores to use for the driver process
+      /// </summary>
+      [JsonProperty("driverCores")]
+      public int DriverCores { get; set; }
+
+      /// <summary>
+      /// Amount of memory to use per executor process
+      /// </summary>
+      [JsonProperty("executorMemory")]
+      public string ExecutorMemory { get; set; }
+
+      /// <summary>
+      /// Number of cores to use for each executor
+      /// </summary>
+      [JsonProperty("executorCores")]
+      public int ExecutorCores { get; set; }
+
+      /// <summary>
+      /// Number of executors to launch for this session
+      /// </summary>
+      [JsonProperty("numExecutors")]
+      public int NumExecutors { get; set; }
+
+
    }
 }
