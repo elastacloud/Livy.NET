@@ -5,11 +5,13 @@ using Elastacloud.LivyApi.AppList;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Diagnostics;
+using System.Text;
+using Newtonsoft.Json;
 
 namespace Elastacloud.LivyApi
 {
    /// <summary>
-   /// The cross-cutting concern library that will get data from livy for am HDInsight cluster
+   /// The cross-cutting concern library that will get data from livy for an HDInsight or EMR cluster
    /// </summary>
    public class LivyRestApi : ILivyApi
    {
@@ -22,9 +24,9 @@ namespace Elastacloud.LivyApi
          _client.DefaultRequestHeaders.Accept.Clear();
          _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
          _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
-            (settings.Username + ":" + settings.Password).Base64Encode());
+            Convert.ToBase64String(Encoding.UTF8.GetBytes(settings.Username + ":" + settings.Password)));
 
-         _serviceUri = string.Format(ServiceUriTemplate, settings.ClusterName);
+         _serviceUri = settings.ClusterUri;
       }
   
       public LivyRestApi(NetworkCredential credential) : this(new LivySettings(credential.UserName, credential.Password, credential.Domain))
@@ -113,16 +115,17 @@ namespace Elastacloud.LivyApi
          response.EnsureSuccessStatusCode();
 
          string json = await response.Content.ReadAsStringAsync();
-         return json.AsJsonObject<TResponse>();
+         return JsonConvert.DeserializeObject<TResponse>(json);
+
       }
 
       private async Task<TResponse> Post<TRequest, TResponse>(string url, TRequest request)
       {
-         HttpResponseMessage response = await _client.PostAsync(_serviceUri + url, new StringContent(request.ToJsonString()));
+         HttpResponseMessage response = await _client.PostAsync(_serviceUri + url, new StringContent(request.ToString()));
          response.EnsureSuccessStatusCode();
 
          string json = await response.Content.ReadAsStringAsync();
-         return json.AsJsonObject<TResponse>();
+         return JsonConvert.DeserializeObject<TResponse>(json);
       }
 
    }

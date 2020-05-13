@@ -20,7 +20,7 @@ namespace Elastacloud.LivyApi.Test
         [Fact]
         public async Task TestList()
         {
-            var settings = new LivySettings("azurecoder", "M!crosoft123", "flightaware-dev");
+            var settings = new LivySettings("xxx", "yyy", "zzz");
             var api = new Mock<LivyRestApi>(settings);
             api.Protected()
                 .Setup<Task<string>>("MakeRequest", ItExpr.IsAny<string>(), ItExpr.IsAny<string>(), ItExpr.IsAny<string>())
@@ -33,7 +33,7 @@ namespace Elastacloud.LivyApi.Test
         [Fact]
         public async Task TestExecute()
         {
-            var settings = new LivySettings("azurecoder", "M!crosoft123", "flightaware-dev");
+            var settings = new LivySettings("xxx", "M!crosoft123", "flightaware-dev");
             var sparkSettings = new LivyBatchRequest(null);
             var api = new Mock<LivyRestApi>(settings);
             api.Protected()
