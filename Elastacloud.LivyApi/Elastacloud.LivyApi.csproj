@@ -5,17 +5,17 @@
     <PackageId>Elastacloud.LivyApi</PackageId>
     <VersionPrefix>
     </VersionPrefix>
-    <Authors>Elastacloud, Richard Conway (@azurecoder), Andy Cross (@andyelastacloud), Ivan Gavryliuk (@aloneguid)</Authors>
+    <Authors>Elastacloud, Richard Conway (@azurecoder), Andy Cross (@andyelastacloud), Sandy May (@Spark_Spartan)</Authors>
     <Company>Elastacloud</Company>
     <Product />
-    <Description>A C# API facilitate access to Livy and HDInsight (Spark).</Description>
-    <PackageTags>hdinsight livy spark scala cloudera</PackageTags>
+    <Description>A C# API facilitate access to Livy and HDInsight (Spark) and also EMR.</Description>
+    <PackageTags>hdinsight livy spark scala cloudera emr</PackageTags>
     <PackageProjectUrl>https://github.com/elastacloud/livyapi</PackageProjectUrl>
     <RepositoryUrl>https://github.com/elastacloud/livyapi</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
     <PackageIconUrl>http://i.isolineltd.com/nuget/ec-livy.png</PackageIconUrl>
-    <Version>2.5.0.0</Version>
-    <FileVersion>2.5.0.0</FileVersion>
+    <Version>2.6.0.0</Version>
+    <FileVersion>2.6.0.0</FileVersion>
     <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>master.snk</AssemblyOriginatorKeyFile>
