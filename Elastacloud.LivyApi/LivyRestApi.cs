@@ -31,7 +31,15 @@ namespace Elastacloud.LivyApi
   
       public LivyRestApi(NetworkCredential credential) : this(new LivySettings(credential.UserName, credential.Password, credential.Domain))
       {
+      }
 
+      public LivyRestApi(string clusterUri)
+      {
+         _client = new HttpClient();
+         _client.DefaultRequestHeaders.Accept.Clear();
+         _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+         _serviceUri = clusterUri;
       }
 
       public LivySettings Settings { get; private set; }
@@ -45,20 +53,20 @@ namespace Elastacloud.LivyApi
       /// </summary>
       public async Task<LivyBatchListResponse> ListAsync()
       {
-         return await Get<LivyBatchListResponse>("batches");
+         return await Get<LivyBatchListResponse>("/batches");
       }
       /// <summary>
       /// Executes a Livy job using a storage jar
       /// </summary>
       public async Task<LivyBatchResponse> ExecuteAsync(LivyBatchRequest batch)
       {
-         LivyBatchResponse response = await Post<LivyBatchRequest, LivyBatchResponse>("batches", batch);
+         LivyBatchResponse response = await Post<LivyBatchRequest, LivyBatchResponse>("/batches", batch);
          return response;
       }
 
       public async Task<LivyBatchResponse> ExecuteWorkflowAsync(LivyBatchRequest batch, TimeSpan waitTime)
       {
-         LivyBatchResponse response = await Post<LivyBatchRequest, LivyBatchResponse>("batches", batch);
+         LivyBatchResponse response = await Post<LivyBatchRequest, LivyBatchResponse>("/batches", batch);
 
          DateTime startTime = DateTime.UtcNow;
          Exception lastException = null;
@@ -105,7 +113,7 @@ namespace Elastacloud.LivyApi
       /// </summary>
       public async Task<LivyBatchResponse> GetBatchStateAsync(int id)
       {
-         return await Get<LivyBatchResponse>("batches/" + id);
+         return await Get<LivyBatchResponse>("/batches/" + id);
       }
 
       private async Task<TResponse> Get<TResponse>(string url)
@@ -116,12 +124,16 @@ namespace Elastacloud.LivyApi
 
          string json = await response.Content.ReadAsStringAsync();
          return JsonConvert.DeserializeObject<TResponse>(json);
-
       }
 
       private async Task<TResponse> Post<TRequest, TResponse>(string url, TRequest request)
       {
-         HttpResponseMessage response = await _client.PostAsync(_serviceUri + url, new StringContent(request.ToString()));
+         HttpResponseMessage response = await _client.PostAsync(_serviceUri + url, new StringContent(
+            JsonConvert.SerializeObject(request, Formatting.Indented, new JsonSerializerSettings()
+            {
+               NullValueHandling = NullValueHandling.Ignore
+            }
+            )));
          response.EnsureSuccessStatusCode();
 
          string json = await response.Content.ReadAsStringAsync();

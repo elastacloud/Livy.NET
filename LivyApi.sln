@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26228.9
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductFactory.LivyApi.Test", "LivyApi.Test\ProductFactory.LivyApi.Test.csproj", "{34985E6D-6765-4561-97B5-6B475EDE8954}"
 EndProject
@@ -14,7 +14,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elastacloud.LivyApi", "Elastacloud.LivyApi\Elastacloud.LivyApi.csproj", "{9E05A389-53C7-4250-A8A5-652BF16E6A52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elastacloud.LivyApi", "Elastacloud.LivyApi\Elastacloud.LivyApi.csproj", "{9E05A389-53C7-4250-A8A5-652BF16E6A52}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivyTestCmdLine", "LivyTestCmdLine\LivyTestCmdLine.csproj", "{4916D728-E684-401D-A79E-4EBFA30CEC49}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,8 +36,15 @@ Global
 		{9E05A389-53C7-4250-A8A5-652BF16E6A52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E05A389-53C7-4250-A8A5-652BF16E6A52}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E05A389-53C7-4250-A8A5-652BF16E6A52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4916D728-E684-401D-A79E-4EBFA30CEC49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4916D728-E684-401D-A79E-4EBFA30CEC49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4916D728-E684-401D-A79E-4EBFA30CEC49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4916D728-E684-401D-A79E-4EBFA30CEC49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B6CD0DBB-DB14-4A31-8B96-145F25C2C923}
 	EndGlobalSection
 EndGlobal
