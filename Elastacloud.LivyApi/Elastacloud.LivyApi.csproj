@@ -15,7 +15,7 @@
     <RepositoryType>GitHub</RepositoryType>
     <PackageIconUrl></PackageIconUrl>
     <Version>2.6.1.0</Version>
-    <FileVersion>2.6.0.0</FileVersion>
+    <FileVersion>2.6.1.0</FileVersion>
     <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>master.snk</AssemblyOriginatorKeyFile>
