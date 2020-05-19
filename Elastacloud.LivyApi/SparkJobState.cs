@@ -13,6 +13,11 @@
       Starting,
 
       /// <summary>
+      /// Session is starting
+      /// </summary>
+      Running,
+
+      /// <summary>
       /// Session is waiting for input
       /// </summary>
       Idle,
