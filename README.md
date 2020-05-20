@@ -1,5 +1,5 @@
-# Livy API
-A C# API facilitate access to Livy and HDInsight (Spark).
+# Livy SDK
+A C# SDK facilitate access to Livy and HDInsight (Spark).
 
 See [Livy.io](http://livy.io/) for project home page where [API documentation](https://github.com/cloudera/livy#rest-api) can be found.
 
